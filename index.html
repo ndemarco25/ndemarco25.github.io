@@ -5,62 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to CHRNICLE</title>
     <style>
+        /* === FULL SCREEN CITY BACKGROUND === */
         body {
             margin: 0;
             padding: 0;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            /* High-quality city skyline background */
-            background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            /* High-quality NYC Skyline */
+            background: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #333;
         }
 
-        /* Top Left Logo */
-        .logo-top {
+        /* === TOP LEFT LOGO === */
+        .logo-badge {
             position: absolute;
             top: 40px;
             left: 50px;
-            border: 1px solid white;
-            padding: 10px 15px;
+            background-color: rgba(100, 100, 100, 0.9); /* Grey box */
             color: white;
+            padding: 12px 18px;
             font-family: "Georgia", serif;
-            text-transform: uppercase;
             letter-spacing: 2px;
+            text-transform: uppercase;
             font-size: 14px;
-            background: rgba(0, 0, 0, 0.4);
         }
 
-        /* The White Box */
+        /* === THE WHITE CARD === */
         .card {
-            background: white;
-            width: 480px;
-            padding: 50px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background-color: white;
+            width: 500px;
+            padding: 60px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
             position: relative;
         }
 
+        /* === TYPOGRAPHY === */
         h1 {
             font-family: "Georgia", serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: normal;
+            color: #000;
             margin-top: 0;
             margin-bottom: 40px;
-            color: #000;
         }
 
-        /* Inputs */
-        input, textarea {
+        /* === INPUTS === */
+        input[type="text"], input[type="email"], input[type="password"], textarea {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             margin-bottom: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
             border-radius: 2px;
-            font-size: 14px;
-            box-sizing: border-box; /* Keeps padding inside */
+            font-size: 15px;
+            box-sizing: border-box; /* Keeps padding inside width */
         }
         
         input:focus, textarea:focus {
@@ -68,63 +68,80 @@
             border-color: #000;
         }
 
-        /* Checkbox area */
-        .options {
+        /* Checkbox Styling */
+        .checkbox-container {
             display: flex;
             align-items: center;
-            font-size: 13px;
-            color: #333;
+            font-size: 14px;
+            color: #444;
             margin-bottom: 30px;
         }
-        
-        .options input {
-            width: auto;
-            margin: 0 10px 0 0;
+        .checkbox-container input {
+            margin-right: 10px;
+            transform: scale(1.2);
         }
 
-        /* Black Button */
+        /* === THE PILL BUTTON === */
         .btn-black {
             background-color: #000;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 15px 45px;
+            border-radius: 50px; /* PILL SHAPE */
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
             float: right;
+            transition: background 0.2s;
         }
 
         .btn-black:hover {
             background-color: #333;
         }
 
-        /* Footer Links inside the box */
-        .footer-links {
-            margin-top: 80px;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            font-size: 13px;
-            color: #0066cc;
-            text-align: center;
+        .clearfix::after {
+            content: "";
             clear: both;
+            display: table;
         }
 
-        .footer-links span {
-            margin: 0 10px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #005a9c;
+        /* === LINKS BELOW BUTTON === */
+        .sub-links {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.6;
         }
-        
-        .footer-links span:hover {
+        .sub-links a {
+            color: #005a9c;
+            text-decoration: none;
+        }
+        .sub-links a:hover {
             text-decoration: underline;
         }
 
-        .divider {
-            color: #ccc;
+        /* === FOOTER === */
+        .footer {
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #005a9c;
+        }
+        
+        .footer span {
+            margin: 0 15px;
+            cursor: pointer;
+            color: #005a9c;
+        }
+        .footer span:hover {
+            text-decoration: underline;
         }
 
+        .divider { color: #ccc; }
+        .hidden { display: none; }
+        
         /* Error Message Style */
         #error-msg {
             color: #d93025;
@@ -132,42 +149,40 @@
             margin-top: 10px;
             display: none;
         }
-
-        /* Utility to hide/show sections */
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 <body>
 
-    <div class="logo-top">CHRNICLE</div>
+    <div class="logo-badge">CHRNICLE</div>
 
     <div class="card">
         
         <div id="view-login">
             <h1>Welcome to Chrnicle</h1>
 
-            <form id="fakeLoginForm">
+            <form id="fakeLogin">
                 <input type="text" placeholder="Username or email" required>
-                <div class="options">
+                <div class="checkbox-container">
                     <input type="checkbox" id="remember">
                     <label for="remember">Remember Me</label>
                 </div>
 
-                <button type="submit" class="btn-black">Next</button>
-                <div style="clear:both;"></div> <div id="error-msg">System unrecognized. Please contact administration.</div>
+                <div class="clearfix">
+                    <button type="submit" class="btn-black">Next</button>
+                </div>
                 
-                <p style="font-size: 12px; color: #333; margin-top: 30px; line-height: 1.5;">
-                    For General Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span><br>
-                    For Limited Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span>
-                </p>
+                <div id="error-msg">System unrecognized. Please contact administration.</div>
             </form>
+
+            <div class="sub-links">
+                For General Partners, please log in <a href="#">here</a>.<br>
+                For Limited Partners, please log in <a href="#">here</a>.
+            </div>
         </div>
 
         <div id="view-contact" class="hidden">
             <h1>Contact Us</h1>
-            <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+            <p style="color:#666; font-size:14px; margin-bottom:20px;">
                 Please verify your identity or submit an inquiry regarding asset acquisition.
             </p>
 
@@ -177,12 +192,14 @@
                 <input type="email" name="email" placeholder="Your Email Address" required>
                 <textarea name="message" rows="4" placeholder="Message / Inquiry" required></textarea>
                 
-                <button type="submit" class="btn-black">Submit</button>
-                <button type="button" onclick="showLogin()" style="background:none; border:none; color:#666; cursor:pointer; float:left; padding: 12px 0;">Back</button>
+                <div class="clearfix">
+                    <button type="submit" class="btn-black">Submit</button>
+                    <span onclick="showLogin()" style="float:left; margin-top:15px; cursor:pointer; color:#666; font-size:13px; text-decoration:underline;">Back to Login</span>
+                </div>
             </form>
         </div>
 
-        <div class="footer-links">
+        <div class="footer">
             <span onclick="showContact()">Help</span>
             <span class="divider">|</span>
             <span onclick="showContact()">Contact Us</span>
@@ -193,20 +210,20 @@
     </div>
 
     <script>
-        // Switch to Contact View
+        // Show Contact Form
         function showContact() {
             document.getElementById('view-login').classList.add('hidden');
             document.getElementById('view-contact').classList.remove('hidden');
         }
 
-        // Switch back to Login View
+        // Show Login Form
         function showLogin() {
             document.getElementById('view-contact').classList.add('hidden');
             document.getElementById('view-login').classList.remove('hidden');
         }
 
         // Fake Login Logic
-        document.getElementById('fakeLoginForm').addEventListener('submit', function(e) {
+        document.getElementById('fakeLogin').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button');
             const originalText = btn.innerText;
