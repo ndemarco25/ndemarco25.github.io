@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            /* YOUR ORIGINAL CITY BACKGROUND - KEPT EXACTLY AS REQUESTED */
+            /* City Background */
             background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
@@ -34,7 +34,7 @@
             background: rgba(0, 0, 0, 0.4);
         }
 
-        /* The White Box */
+        /* Main Card */
         .card {
             background: white;
             width: 400px;
@@ -53,7 +53,7 @@
             color: #000;
         }
 
-        /* Inputs */
+        /* Input Fields */
         input, textarea {
             width: 100%;
             padding: 12px;
@@ -69,7 +69,7 @@
             border-color: #000;
         }
 
-        /* Checkbox area */
+        /* Checkbox Area */
         .options {
             display: flex;
             align-items: center;
@@ -83,13 +83,13 @@
             margin: 0 10px 0 0;
         }
 
-        /* Black Button (Pill Shape for Polish) */
+        /* Primary Action Button (Pill Shape) */
         .btn-black {
             background-color: #000;
             color: white;
             border: none;
             padding: 12px 35px;
-            border-radius: 50px; /* Pill Shape */
+            border-radius: 50px;
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
@@ -100,7 +100,7 @@
             background-color: #333;
         }
 
-        /* Footer Links inside the box */
+        /* Footer Links */
         .footer-links {
             margin-top: 60px;
             border-top: 1px solid #eee;
@@ -124,8 +124,8 @@
 
         .divider { color: #ccc; }
 
-        /* Error Message Style */
-        #error-msg {
+        /* Status Message Style */
+        #status-msg {
             color: #d93025;
             font-size: 13px;
             margin-top: 10px;
@@ -133,7 +133,7 @@
             clear: both;
         }
 
-        /* Restricted Message Area */
+        /* Restricted Access Layout */
         .restricted-container {
             text-align: center;
             padding: 30px 0;
@@ -153,7 +153,7 @@
         <div id="view-home">
             <h1>Welcome to Chrnicle</h1>
 
-            <form id="fakeLoginForm">
+            <form id="accessPortalForm">
                 <input type="text" placeholder="Username or email" required>
                 <div class="options">
                     <input type="checkbox" id="remember">
@@ -162,7 +162,7 @@
 
                 <button type="submit" class="btn-black">Next</button>
                 <div class="clearfix"></div> 
-                <div id="error-msg">System unrecognized. Please contact administration.</div>
+                <div id="status-msg">System unrecognized. Please contact administration.</div>
                 
                 <p style="font-size: 12px; color: #333; margin-top: 20px; line-height: 1.6;">
                     For General Partners, please log in <span style="color:#005a9c; cursor:pointer;" onclick="showRestricted('General Partner Portal')">here.</span><br>
@@ -212,7 +212,7 @@
     </div>
 
     <script>
-        // Switch Views
+        // --- View Controller Logic ---
         function showContact() {
             hideAll();
             document.getElementById('view-contact').classList.remove('hidden');
@@ -235,22 +235,24 @@
             document.getElementById('view-restricted').classList.add('hidden');
         }
 
-        // Fake Login Logic (Main Screen Only)
-        document.getElementById('fakeLoginForm').addEventListener('submit', function(e) {
+        // --- Authentication Simulation Logic ---
+        // Simulates server-side validation latency before returning status
+        document.getElementById('accessPortalForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button');
             const originalText = btn.innerText;
-            const errorMsg = document.getElementById('error-msg');
+            const statusMsg = document.getElementById('status-msg');
             
-            // Loading state
+            // Initiate Loading State
             btn.innerText = "Loading...";
             btn.style.opacity = "0.7";
-            errorMsg.style.display = "none";
+            statusMsg.style.display = "none";
 
+            // Simulate Network Delay
             setTimeout(() => {
                 btn.innerText = originalText;
                 btn.style.opacity = "1";
-                errorMsg.style.display = "block"; // Show error
+                statusMsg.style.display = "block"; // Display Return Status
             }, 1500);
         });
     </script>
