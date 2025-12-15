@@ -3,193 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHRNICLE | Private Access</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-    
+    <title>Welcome to CHRNICLE</title>
     <style>
         body {
-            background-color: #080808; /* distinct deep black */
-            color: #e0e0e0;
-            font-family: 'Inter', sans-serif; /* Clean UI font */
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            /* High-quality city skyline background */
+            background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            -webkit-font-smoothing: antialiased; /* Crisper text on Mac */
+            color: #333;
         }
 
-        .container {
-            width: 360px; /* Slightly wider */
-            padding: 50px 40px;
-            background: #0f0f0f; /* Subtle contrast from bg */
-            border: 1px solid #222; /* Very subtle border */
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7); /* Deep, soft shadow */
-            text-align: center;
-            border-radius: 4px; /* Tiny roundness like premium cards */
-        }
-
-        /* The Premium Serif Heading */
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            margin: 0 0 10px 0;
-            color: #fff;
-        }
-
-        .subtitle {
-            font-size: 11px;
+        /* Top Left Logo */
+        .logo-top {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            border: 1px solid white;
+            padding: 10px 15px;
+            color: white;
+            font-family: "Georgia", serif;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #666;
-            margin-bottom: 40px;
-            font-weight: 500;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.4);
         }
 
-        /* High-End Input Fields */
-        input, textarea {
-            width: 100%;
-            background: #080808;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 14px 16px; /* Taller, more comfortable click area */
-            margin-bottom: 16px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
-            border-radius: 4px; /* Matches container */
-            box-sizing: border-box;
-            transition: all 0.2s ease;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: #444;
-            letter-spacing: 0.5px;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #666;
-            background: #050505;
-        }
-
-        /* The "Blackstone" style Button - Pill Shape or Soft Rect */
-        button {
-            width: 100%;
-            padding: 14px;
-            background: #fff; /* High contrast */
-            color: #000;
-            border: none;
-            font-weight: 600;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-radius: 30px; /* Pill shape like Blackstone 'Next' button */
-            transition: transform 0.1s, opacity 0.2s;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-        
-        button:active {
-            transform: scale(0.98);
-        }
-
-        /* Refined Divider */
-        .divider {
-            height: 1px;
-            background: #222;
-            margin: 40px 0;
+        /* The White Box */
+        .card {
+            background: white;
+            width: 480px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: relative;
         }
 
-        .divider span {
-            position: absolute;
-            top: -9px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #0f0f0f;
-            padding: 0 15px;
-            color: #444;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        h1 {
+            font-family: "Georgia", serif;
+            font-size: 28px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: #000;
         }
 
-        /* Error Message */
-        #login-msg {
-            height: 20px;
-            margin-top: 15px;
-            font-size: 11px;
-            color: #cf6679; /* Softer red, less harsh */
-            font-weight: 400;
+        /* Inputs */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+            box-sizing: border-box; /* Keeps padding inside */
+        }
+        
+        input:focus, textarea:focus {
+            outline: 1px solid #000;
+            border-color: #000;
         }
 
-        /* Bottom Links */
-        .footer-links {
-            margin-top: 30px;
-            font-size: 11px;
-            color: #444;
+        /* Checkbox area */
+        .options {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 30px;
         }
-        .footer-links span {
-            margin: 0 8px;
+        
+        .options input {
+            width: auto;
+            margin: 0 10px 0 0;
+        }
+
+        /* Black Button */
+        .btn-black {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
-            transition: color 0.2s;
+            float: right;
         }
+
+        .btn-black:hover {
+            background-color: #333;
+        }
+
+        /* Footer Links inside the box */
+        .footer-links {
+            margin-top: 80px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #0066cc;
+            text-align: center;
+            clear: both;
+        }
+
+        .footer-links span {
+            margin: 0 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #005a9c;
+        }
+        
         .footer-links span:hover {
-            color: #888;
+            text-decoration: underline;
+        }
+
+        .divider {
+            color: #ccc;
+        }
+
+        /* Error Message Style */
+        #error-msg {
+            color: #d93025;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Utility to hide/show sections */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Chrnicle</h1>
-        <p class="subtitle">Private Access Portal</p>
+    <div class="logo-top">CHRNICLE</div>
 
-        <form id="fakeLogin">
-            <input type="text" placeholder="Identity" required>
-            <input type="password" placeholder="Passkey" required>
-            <button type="submit">Authenticate</button>
-        </form>
-        <div id="login-msg"></div>
-
-        <div class="divider"><span>Or</span></div>
-
-        <p style="font-size: 12px; color: #888; margin-bottom: 20px; font-weight: 300;">
-            Request Asset Acquisition / Access
-        </p>
+    <div class="card">
         
-        <form action="https://formspree.io/f/mrbnvqqa" method="POST">
-             <input type="hidden" name="_next" value="https://www.chrnicle.com">
-            
-            <input type="email" name="email" placeholder="Institutional Email" required>
-            <textarea name="message" rows="3" placeholder="Inquiry Details" required></textarea>
-            
-            <button type="submit" style="background: #222; color: #ccc;">Transmit Inquiry</button>
-        </form>
+        <div id="view-login">
+            <h1>Welcome to Chrnicle</h1>
+
+            <form id="fakeLoginForm">
+                <input type="text" placeholder="Username or email" required>
+                <div class="options">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
+
+                <button type="submit" class="btn-black">Next</button>
+                <div style="clear:both;"></div> <div id="error-msg">System unrecognized. Please contact administration.</div>
+                
+                <p style="font-size: 12px; color: #333; margin-top: 30px; line-height: 1.5;">
+                    For General Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span><br>
+                    For Limited Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span>
+                </p>
+            </form>
+        </div>
+
+        <div id="view-contact" class="hidden">
+            <h1>Contact Us</h1>
+            <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                Please verify your identity or submit an inquiry regarding asset acquisition.
+            </p>
+
+            <form action="https://formspree.io/f/mrbnvqqa" method="POST">
+                <input type="hidden" name="_next" value="https://www.chrnicle.com">
+                
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="4" placeholder="Message / Inquiry" required></textarea>
+                
+                <button type="submit" class="btn-black">Submit</button>
+                <button type="button" onclick="showLogin()" style="background:none; border:none; color:#666; cursor:pointer; float:left; padding: 12px 0;">Back</button>
+            </form>
+        </div>
 
         <div class="footer-links">
-            <span>Help</span> • <span>Privacy</span> • <span>Legal</span>
+            <span onclick="showContact()">Help</span>
+            <span class="divider">|</span>
+            <span onclick="showContact()">Contact Us</span>
+            <span class="divider">|</span>
+            <span>Privacy Center</span>
         </div>
+
     </div>
 
     <script>
-        document.getElementById('fakeLogin').addEventListener('submit', function(e) {
+        // Switch to Contact View
+        function showContact() {
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-contact').classList.remove('hidden');
+        }
+
+        // Switch back to Login View
+        function showLogin() {
+            document.getElementById('view-contact').classList.add('hidden');
+            document.getElementById('view-login').classList.remove('hidden');
+        }
+
+        // Fake Login Logic
+        document.getElementById('fakeLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const msg = document.getElementById('login-msg');
-            msg.style.color = "#666";
-            msg.innerText = "Verifying...";
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            const errorMsg = document.getElementById('error-msg');
             
+            // Loading state
+            btn.innerText = "Loading...";
+            btn.style.opacity = "0.7";
+            errorMsg.style.display = "none";
+
             setTimeout(() => {
-                msg.style.color = "#cf6679";
-                msg.innerText = "Credentials unrecognized.";
-            }, 1200);
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+                errorMsg.style.display = "block"; // Show error
+            }, 1500);
         });
     </script>
 
