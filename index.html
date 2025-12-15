@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to CHRNICLE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* === FULL SCREEN CITY BACKGROUND === */
+        /* === BACKGROUND: Subtle, Corporate, Glass === */
         body {
             margin: 0;
             padding: 0;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            /* High-quality NYC Skyline */
-            background: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            font-family: 'Inter', sans-serif;
+            /* Moodier, abstract building glass background */
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -19,53 +21,70 @@
             justify-content: center;
         }
 
+        /* Dark overlay to make text pop and feel serious */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* Dim the background slightly */
+            z-index: -1;
+        }
+
         /* === TOP LEFT LOGO === */
         .logo-badge {
             position: absolute;
             top: 40px;
             left: 50px;
-            background-color: rgba(100, 100, 100, 0.9); /* Grey box */
+            background-color: #000; /* Solid Black */
             color: white;
-            padding: 12px 18px;
-            font-family: "Georgia", serif;
-            letter-spacing: 2px;
+            padding: 12px 20px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
             text-transform: uppercase;
             font-size: 14px;
+            font-weight: 600;
         }
 
         /* === THE WHITE CARD === */
         .card {
             background-color: white;
-            width: 500px;
-            padding: 60px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            width: 480px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4); /* Deeper shadow */
             position: relative;
+            border-radius: 2px;
         }
 
         /* === TYPOGRAPHY === */
         h1 {
-            font-family: "Georgia", serif;
-            font-size: 32px;
-            font-weight: normal;
-            color: #000;
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 400;
+            color: #111;
             margin-top: 0;
             margin-bottom: 40px;
+            letter-spacing: -0.5px;
         }
 
         /* === INPUTS === */
         input[type="text"], input[type="email"], input[type="password"], textarea {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 2px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
             font-size: 15px;
-            box-sizing: border-box; /* Keeps padding inside width */
+            color: #333;
+            box-sizing: border-box;
+            background: #fafafa;
+            transition: all 0.2s;
         }
         
         input:focus, textarea:focus {
-            outline: 1px solid #000;
+            outline: none;
             border-color: #000;
+            background: #fff;
         }
 
         /* Checkbox Styling */
@@ -73,12 +92,13 @@
             display: flex;
             align-items: center;
             font-size: 14px;
-            color: #444;
+            color: #555;
             margin-bottom: 30px;
         }
         .checkbox-container input {
-            margin-right: 10px;
-            transform: scale(1.2);
+            margin-right: 12px;
+            accent-color: #000;
+            transform: scale(1.1);
         }
 
         /* === THE PILL BUTTON === */
@@ -86,17 +106,18 @@
             background-color: #000;
             color: white;
             border: none;
-            padding: 15px 45px;
+            padding: 16px 48px;
             border-radius: 50px; /* PILL SHAPE */
+            font-family: 'Inter', sans-serif;
             font-size: 15px;
-            font-weight: bold;
+            font-weight: 600;
             cursor: pointer;
             float: right;
-            transition: background 0.2s;
+            transition: transform 0.1s, opacity 0.2s;
         }
 
         .btn-black:hover {
-            background-color: #333;
+            opacity: 0.9;
         }
 
         .clearfix::after {
@@ -107,14 +128,16 @@
 
         /* === LINKS BELOW BUTTON === */
         .sub-links {
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 13px;
-            color: #333;
+            color: #444;
             line-height: 1.6;
+            font-weight: 400;
         }
         .sub-links a {
-            color: #005a9c;
+            color: #0044cc;
             text-decoration: none;
+            font-weight: 500;
         }
         .sub-links a:hover {
             text-decoration: underline;
@@ -122,32 +145,34 @@
 
         /* === FOOTER === */
         .footer {
-            margin-top: 60px;
+            margin-top: 50px;
             border-top: 1px solid #eee;
             padding-top: 20px;
             text-align: center;
-            font-size: 13px;
-            color: #005a9c;
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
         }
         
         .footer span {
             margin: 0 15px;
             cursor: pointer;
-            color: #005a9c;
+            transition: color 0.2s;
         }
         .footer span:hover {
-            text-decoration: underline;
+            color: #000;
         }
 
-        .divider { color: #ccc; }
+        .divider { color: #ddd; }
         .hidden { display: none; }
         
         /* Error Message Style */
         #error-msg {
-            color: #d93025;
+            color: #d32f2f;
             font-size: 13px;
-            margin-top: 10px;
+            margin-top: 15px;
             display: none;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -162,16 +187,18 @@
 
             <form id="fakeLogin">
                 <input type="text" placeholder="Username or email" required>
+                <input type="password" placeholder="Password" style="display:none;">
+                
                 <div class="checkbox-container">
                     <input type="checkbox" id="remember">
-                    <label for="remember">Remember Me</label>
+                    <label for="remember">Remember me</label>
                 </div>
 
                 <div class="clearfix">
                     <button type="submit" class="btn-black">Next</button>
                 </div>
                 
-                <div id="error-msg">System unrecognized. Please contact administration.</div>
+                <div id="error-msg">Identity unrecognized. Please contact Investor Relations.</div>
             </form>
 
             <div class="sub-links">
@@ -182,19 +209,19 @@
 
         <div id="view-contact" class="hidden">
             <h1>Contact Us</h1>
-            <p style="color:#666; font-size:14px; margin-bottom:20px;">
+            <p style="color:#555; font-size:14px; margin-bottom:25px; line-height:1.5;">
                 Please verify your identity or submit an inquiry regarding asset acquisition.
             </p>
 
             <form action="https://formspree.io/f/mrbnvqqa" method="POST">
                 <input type="hidden" name="_next" value="https://www.chrnicle.com">
                 
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="4" placeholder="Message / Inquiry" required></textarea>
+                <input type="email" name="email" placeholder="Institutional Email Address" required>
+                <textarea name="message" rows="4" placeholder="Inquiry Details" required></textarea>
                 
                 <div class="clearfix">
                     <button type="submit" class="btn-black">Submit</button>
-                    <span onclick="showLogin()" style="float:left; margin-top:15px; cursor:pointer; color:#666; font-size:13px; text-decoration:underline;">Back to Login</span>
+                    <span onclick="showLogin()" style="float:left; margin-top:18px; cursor:pointer; color:#666; font-size:13px; text-decoration:underline;">Back to Login</span>
                 </div>
             </form>
         </div>
@@ -230,8 +257,8 @@
             const errorMsg = document.getElementById('error-msg');
             
             // Loading state
-            btn.innerText = "Loading...";
-            btn.style.opacity = "0.7";
+            btn.innerText = "Verifying...";
+            btn.style.opacity = "0.8";
             errorMsg.style.display = "none";
 
             setTimeout(() => {
