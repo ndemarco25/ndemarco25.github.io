@@ -1,10 +1,155 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Website</title>
-  </head>
-  <body>
-    <h1>Hello</h1>
-    <p>This is my website.</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRNICLE | Private Access</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #dcdcdc;
+            font-family: "Georgia", serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 320px;
+            padding: 40px;
+            border: 1px solid #222;
+            box-shadow: 0 0 30px rgba(0,0,0,0.9);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .status {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            color: #444;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        /* Input Styling */
+        input, textarea {
+            width: 100%;
+            background: #0f0f0f;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 12px;
+            margin-bottom: 15px;
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        /* Button Styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #dcdcdc;
+            color: #000;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: opacity 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: #222;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .divider span {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #050505;
+            padding: 0 10px;
+            color: #333;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Fake Login Feedback */
+        #login-msg {
+            height: 20px;
+            margin-top: 10px;
+            font-size: 10px;
+            font-family: "Courier New", monospace;
+            color: #8b0000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Chrnicle</h1>
+        <p class="status">System Status: Restricted</p>
+
+        <form id="fakeLogin">
+            <input type="text" placeholder="OPERATOR ID" required>
+            <input type="password" placeholder="ACCESS KEY" required>
+            <button type="submit">Initialize Session</button>
+        </form>
+        <div id="login-msg"></div>
+
+        <div class="divider"><span>Inquiries</span></div>
+
+        <p style="font-size: 11px; color: #666; margin-bottom: 15px; text-transform: uppercase;">
+            Asset Acquisition / Domain Inquiry
+        </p>
+        
+        <form action="https://formspree.io/f/mrbnvqqa" method="POST">
+            <input type="email" name="email" placeholder="YOUR EMAIL" required>
+            <textarea name="message" rows="3" placeholder="PROPOSAL / INQUIRY DETAILS" required></textarea>
+            <button type="submit" style="background: #222; color: #888; border: 1px solid #333;">Transmit Inquiry</button>
+        </form>
+    </div>
+
+    <script>
+        // Fake Login Logic
+        document.getElementById('fakeLogin').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('login-msg');
+            msg.style.color = "#666";
+            msg.innerText = "AUTHENTICATING...";
+            
+            setTimeout(() => {
+                msg.style.color = "#8b0000";
+                msg.innerText = "ACCESS DENIED: UNRECOGNIZED HASH.";
+            }, 1200);
+        });
+    </script>
+
+</body>
 </html>
