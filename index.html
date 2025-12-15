@@ -3,151 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHRNICLE | Private Access</title>
+    <title>Welcome to CHRNICLE</title>
     <style>
         body {
-            background-color: #050505;
-            color: #dcdcdc;
-            font-family: "Georgia", serif;
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            /* High-quality city skyline background */
+            background: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            letter-spacing: 1px;
+            color: #333;
         }
 
-        .container {
-            width: 320px;
-            padding: 40px;
-            border: 1px solid #222;
-            box-shadow: 0 0 30px rgba(0,0,0,0.9);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 22px;
+        /* Top Left Logo */
+        .logo-top {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            border: 1px solid white;
+            padding: 10px 15px;
+            color: white;
+            font-family: "Georgia", serif;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-
-        .status {
-            font-family: "Courier New", monospace;
-            font-size: 10px;
-            color: #444;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        /* Input Styling */
-        input, textarea {
-            width: 100%;
-            background: #0f0f0f;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 12px;
-            margin-bottom: 15px;
-            font-family: "Courier New", monospace;
-            font-size: 12px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #666;
-        }
-
-        /* Button Styling */
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #dcdcdc;
-            color: #000;
-            border: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 11px;
-            cursor: pointer;
             letter-spacing: 2px;
-            transition: opacity 0.3s;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.4);
         }
 
-        button:hover {
-            opacity: 0.8;
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: #222;
-            margin: 40px 0;
+        /* The White Box */
+        .card {
+            background: white;
+            width: 480px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: relative;
         }
 
-        .divider span {
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #050505;
-            padding: 0 10px;
-            color: #333;
-            font-size: 10px;
-            text-transform: uppercase;
+        h1 {
+            font-family: "Georgia", serif;
+            font-size: 28px;
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: #000;
         }
 
-        /* Fake Login Feedback */
-        #login-msg {
-            height: 20px;
+        /* Inputs */
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            font-size: 14px;
+            box-sizing: border-box; /* Keeps padding inside */
+        }
+        
+        input:focus, textarea:focus {
+            outline: 1px solid #000;
+            border-color: #000;
+        }
+
+        /* Checkbox area */
+        .options {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .options input {
+            width: auto;
+            margin: 0 10px 0 0;
+        }
+
+        /* Black Button */
+        .btn-black {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            float: right;
+        }
+
+        .btn-black:hover {
+            background-color: #333;
+        }
+
+        /* Footer Links inside the box */
+        .footer-links {
+            margin-top: 80px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #0066cc;
+            text-align: center;
+            clear: both;
+        }
+
+        .footer-links span {
+            margin: 0 10px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #005a9c;
+        }
+        
+        .footer-links span:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            color: #ccc;
+        }
+
+        /* Error Message Style */
+        #error-msg {
+            color: #d93025;
+            font-size: 13px;
             margin-top: 10px;
-            font-size: 10px;
-            font-family: "Courier New", monospace;
-            color: #8b0000;
+            display: none;
+        }
+
+        /* Utility to hide/show sections */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Chrnicle</h1>
-        <p class="status">System Status: Restricted</p>
+    <div class="logo-top">CHRNICLE</div>
 
-        <form id="fakeLogin">
-            <input type="text" placeholder="OPERATOR ID" required>
-            <input type="password" placeholder="ACCESS KEY" required>
-            <button type="submit">Initialize Session</button>
-        </form>
-        <div id="login-msg"></div>
-
-        <div class="divider"><span>Inquiries</span></div>
-
-        <p style="font-size: 11px; color: #666; margin-bottom: 15px; text-transform: uppercase;">
-            Asset Acquisition / Domain Inquiry
-        </p>
+    <div class="card">
         
-        <form action="https://formspree.io/f/mrbnvqqa" method="POST">
-            <input type="email" name="email" placeholder="YOUR EMAIL" required>
-            <textarea name="message" rows="3" placeholder="PROPOSAL / INQUIRY DETAILS" required></textarea>
-            <button type="submit" style="background: #222; color: #888; border: 1px solid #333;">Transmit Inquiry</button>
-        </form>
+        <div id="view-login">
+            <h1>Welcome to Chrnicle</h1>
+
+            <form id="fakeLoginForm">
+                <input type="text" placeholder="Username or email" required>
+                <div class="options">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember Me</label>
+                </div>
+
+                <button type="submit" class="btn-black">Next</button>
+                <div style="clear:both;"></div> <div id="error-msg">System unrecognized. Please contact administration.</div>
+                
+                <p style="font-size: 12px; color: #333; margin-top: 30px; line-height: 1.5;">
+                    For General Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span><br>
+                    For Limited Partners, please log in <span style="color:#005a9c; cursor:pointer;">here.</span>
+                </p>
+            </form>
+        </div>
+
+        <div id="view-contact" class="hidden">
+            <h1>Contact Us</h1>
+            <p style="font-size: 14px; color: #666; margin-bottom: 20px;">
+                Please verify your identity or submit an inquiry regarding asset acquisition.
+            </p>
+
+            <form action="https://formspree.io/f/mrbnvqqa" method="POST">
+                <input type="hidden" name="_next" value="https://www.chrnicle.com">
+                
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="4" placeholder="Message / Inquiry" required></textarea>
+                
+                <button type="submit" class="btn-black">Submit</button>
+                <button type="button" onclick="showLogin()" style="background:none; border:none; color:#666; cursor:pointer; float:left; padding: 12px 0;">Back</button>
+            </form>
+        </div>
+
+        <div class="footer-links">
+            <span onclick="showContact()">Help</span>
+            <span class="divider">|</span>
+            <span onclick="showContact()">Contact Us</span>
+            <span class="divider">|</span>
+            <span>Privacy Center</span>
+        </div>
+
     </div>
 
     <script>
+        // Switch to Contact View
+        function showContact() {
+            document.getElementById('view-login').classList.add('hidden');
+            document.getElementById('view-contact').classList.remove('hidden');
+        }
+
+        // Switch back to Login View
+        function showLogin() {
+            document.getElementById('view-contact').classList.add('hidden');
+            document.getElementById('view-login').classList.remove('hidden');
+        }
+
         // Fake Login Logic
-        document.getElementById('fakeLogin').addEventListener('submit', function(e) {
+        document.getElementById('fakeLoginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const msg = document.getElementById('login-msg');
-            msg.style.color = "#666";
-            msg.innerText = "AUTHENTICATING...";
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            const errorMsg = document.getElementById('error-msg');
             
+            // Loading state
+            btn.innerText = "Loading...";
+            btn.style.opacity = "0.7";
+            errorMsg.style.display = "none";
+
             setTimeout(() => {
-                msg.style.color = "#8b0000";
-                msg.innerText = "ACCESS DENIED: UNRECOGNIZED HASH.";
-            }, 1200);
+                btn.innerText = originalText;
+                btn.style.opacity = "1";
+                errorMsg.style.display = "block"; // Show error
+            }, 1500);
         });
     </script>
 
